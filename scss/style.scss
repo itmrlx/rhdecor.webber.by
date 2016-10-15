@@ -1020,3 +1020,66 @@
 		text-align: center;
 	}
 }
+
+// training
+.training-page{
+	.content-container{
+		margin-bottom: 50px;
+	}
+	.left{
+		@media (max-width: 991px) {
+			width: 50%;
+		}
+		@media (max-width: 767px) {
+			width: 100%;
+		}
+	}
+	.right{
+		@media (max-width: 991px) {
+			width: 50%;
+		}
+		@media (max-width: 767px) {
+			width: 100%;
+			margin-bottom: 50px;
+		}
+	}
+}
+.white-training{
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	padding: 0 15px;
+	.title-t{
+		font-size: 21px;
+		font-weight: 600;
+		padding: 15px;
+		text-align: center;
+	}
+	.row{
+		border-top: 1px solid #e6e7e7;
+		.col-xs-8,
+		.col-xs-4{
+			padding: 15px;
+		}
+		.col-xs-4{
+			text-align: center;
+		}
+	}
+	.date,
+	.date2,
+	.plan,
+	.time{
+		border-right: 1px solid #e6e7e7;
+		span{
+			display: block;
+			padding-left: 30px;
+			background-size: 20px 20px;
+			background-repeat: no-repeat;
+			background-position: 0 50%;
+		}
+		&.date span{background-image: url(../img/calendar.svg);}
+		&.date2 span{background-image: url(../img/star.svg);}
+		&.plan span{background-image: url(../img/document.svg);}
+		&.time span{background-image: url(../img/speedometer.svg);}
+	}
+}
