@@ -763,7 +763,7 @@
 				top: 0;
 				width: 100%;
 				height: 100%;
-				border-radius: 5px;
+				border-radius: 10px;
 				background: rgba(#000,.55);
 				z-index: 1;
 				opacity: 0;
@@ -789,7 +789,7 @@
 		}
 		img{
 			width: 100%;
-			border-radius: 5px;
+			border-radius: 10px;
 			display: block;
 		}
 		.title-b{
@@ -808,6 +808,107 @@
 		}
 		.more{
 			color: #e50014;
+		}
+	}
+}
+
+// portfolio page
+.portfolio-page-wr{
+	background-image: url(../img/portfolio-bg.jpg);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	.title{
+		color: #e6e6e7;
+		text-align: center;
+		font-size: 83px;
+		font-weight: bold;
+		line-height: 80px;
+		@media (max-width: 767px) {
+			font-size: 48px;
+			line-height: 40px;
+		}
+	}
+}
+.portfolio-page{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	.col-xs-4{
+		@media (max-width: 991px) {
+			width: 50%;
+		}
+		@media (max-width: 767px) {
+			width: 100%;
+		}
+	}
+	.portfolio-item{
+		background-color: white;
+		border-radius: 10px;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		text-align: center;
+		padding-bottom: 30px;
+		margin-bottom: 30px;
+		.img{
+			border-radius: 10px 10px 0 0;
+			position: relative;
+			display: block;
+			&:before{
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 10px;
+				background: rgba(#000,.55);
+				z-index: 1;
+				opacity: 0;
+				transition: all .5s;
+			}
+			&:after{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -15px;
+				margin-left: -15px;
+				width: 30px;
+				height: 30px;
+				background-image: url(../img/search.svg);
+				background-size: 30px 30px;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+				z-index: 2;
+				opacity: 0;
+				transition: all .5s;
+			}
+			img{
+				border-radius: 10px 10px 0 0;
+				width: 100%;
+			}
+			&:hover{
+				&:after,
+				&:before{
+					opacity: 1;
+				}
+			}
+		}
+		.title-b{
+			font-size: 25px;
+		}
+		.desc{
+			margin-bottom: 15px;
+			font-size: 15px;
+			line-height: 16px;
+			height: 16px * 2;
+			overflow: hidden;
+		}
+		.date{
+			border: 1px solid rgba(#000,.1);
+			display: inline-block;
+			padding: 7px 20px;
+			border-radius: 5px;
+			margin-bottom: 20px;
 		}
 	}
 }
