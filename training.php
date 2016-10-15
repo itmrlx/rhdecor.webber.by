@@ -39,7 +39,7 @@
 			</div>
 			<div class="clearfix"></div>
 			<div class="centered">
-				<a href="#" class="btn btn-circle">Оставить заявку</a>
+				<a href="#fform" class="btn btn-circle fancybox" onclick="fform('Оставить заявку на обучение','Какое обучение');">Оставить заявку</a>
 			</div>
 		</div>
 	</div>

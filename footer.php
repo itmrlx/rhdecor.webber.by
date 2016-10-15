@@ -32,6 +32,35 @@
 		</div>
 	</footer>
 
+	<div id="fform" style="display: none;">
+		<form id="fform-form" class="form-class">
+			<div class="modal-form-title">Обратная связь</div>
+			<div class="form-group">
+				<input class="form-control" id="namef" name="name" type="text" required />
+				<label for="namef">Ваше имя *</label>
+			</div>
+			<div class="form-group">
+				<input class="form-control" id="mailf" name="mail" type="email" />
+				<label for="mailf">Email</label>
+			</div>
+			<div class="form-group">
+				<input class="form-control" id="telf" name="tel" type="tel" required />
+				<label for="telf">Ваш телефон *</label>
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" id="mesf" name="comment" cols="30" rows="5"></textarea>
+				<label for="mesf">Сообщение</label>
+			</div>
+			<div class="form-group for-robots" style="display: none;">
+				<input class="form-control" type="text" name="email" />
+				<input class="form-control modal-form-value" type="text" name="title" />
+			</div>
+			<div class="centered">
+				<button type="submit" class="btn btn-circle">Отправить</button>
+			</div>
+		</form>
+	</div>
+
 	<script src="js/min/jquery-3.0.0-min.js"></script>
 	<script src="js/min/jquery.fancybox-min.js"></script>
 	<script src="js/min/slick-min.js"></script>

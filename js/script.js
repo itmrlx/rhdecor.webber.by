@@ -34,3 +34,33 @@ $('.burger-menu').click(function () {
   $(this).toggleClass('active');
   $('.pro-menu').slideToggle();
 });
+
+// send forms
+function send_form (id, file, message) {
+  $('#'+id).submit(function() {
+    var str = $(this).serialize();
+    $.ajax({
+      type: 'POST',
+      url: '/mail/'+file+'.php',
+      data: str,
+      success: function(msg){
+        if(msg == 'OK'){
+          result = '<h3 class="form-sended centered">'+message+'</h3>';
+          $('#'+id).html(result);
+        }else{
+          result = msg;
+          $('#'+id).html(result);
+        }
+      }
+    });
+    return false;
+  });
+}
+send_form('form-contacts', 'phpform', 'Спасибо, скоро мы с вами свяжемся');
+send_form('fform-form', 'phpform', 'Спасибо, скоро мы с вами свяжемся');
+
+// change form title
+function fform(title, value) {
+  $('.modal-form-title').html(title);
+  $('.modal-form-value').val(value);
+}
