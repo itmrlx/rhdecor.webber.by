@@ -6,26 +6,32 @@
 					<div class="title">Мы в социальных сетях</div>
 					<div class="desc">Подпишись и следи за новостями</div>
 					<div class="col-xs-6">
-						soc
+						<script type="text/javascript" src="//vk.com/js/api/openapi.js?133"></script>
+
+						<!-- VK Widget -->
+						<div id="vk_groups"></div>
+						<script type="text/javascript">
+						VK.Widgets.Group("vk_groups", {mode: 5, width: "220", height: "290", color1: 'FFFFFF', color2: '000000', color3: '5E81A8'}, 48602225);
+						</script>
 					</div>
 					<div class="col-xs-6">
-						soc
+						<?php echo do_shortcode('[instagram-feed]'); ?>
 					</div>
 				</div>
 				<div class="col-xs-4 right">
 					<div class="logo-container">
-						<a href="/" class="logo"><img src="img/logo.png" alt="lofo"></a>
+						<a href="/" class="logo"><img src="<?php the_field('logo','option'); ?>" alt="logo"></a>
 					</div>
 					<div class="contacts-container">
 						<div class="title-c">Наши контакты</div>
 						<div class="phones">
-							<a href="tel:+375 29 999-99-99">+375 29 999-99-99</a>
-							<a href="tel:+375 29 999-99-99">+375 29 999-99-99</a>
+							<a href="tel:<?php echo str_replace(array(" ","(",")","-"),"",get_field(tel1,option)); ?>"><?php the_field('tel1','option'); ?></a>
+							<a href="tel:<?php echo str_replace(array(" ","(",")","-"),"",get_field(tel2,option)); ?>"><?php the_field('tel2','option'); ?></a>
 						</div>
-						<a href="mailto:info@rhdecor.by" class="mail">info@rhdecor.by</a>
+						<a href="mailto:<?php the_field('email','option'); ?>" class="mail"><?php the_field('email','option'); ?></a>
 					</div>
 					<div class="copyright">
-						<p class="webber">Разработка сайта<a href="http://webber.by"><img src="img/webber-gray.svg" alt="Webber создание сайтов">Webber Studio</a></p>
+						<p class="webber">Разработка сайта<a href="http://webber.by"><img src="<?php bloginfo('template_url'); ?>/img/webber-gray.svg" alt="Webber создание сайтов">Webber Studio</a></p>
 					</div>
 				</div>
 			</div>
@@ -61,9 +67,10 @@
 		</form>
 	</div>
 
-	<script src="js/min/jquery-3.0.0-min.js"></script>
-	<script src="js/min/jquery.fancybox-min.js"></script>
-	<script src="js/min/slick-min.js"></script>
-	<script src="js/min/script-min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/min/jquery-3.0.0-min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/min/jquery.fancybox-min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/min/slick-min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/min/script-min.js"></script>
+	<?php wp_footer(); ?>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php get_header(); ?>
 
 	<!-- header -->
 	<header class="wrapper header-t">
@@ -7,39 +7,34 @@
 				<div class="col-xs-2 left-container">
 					<div class="text">
 						<a href="/" class="logo">
-							<img src="img/logo.png" alt="logo">
+							<img src="<?php the_field('logo','option'); ?>" alt="logo">
 						</a>
 						<div class="burger-menu">
 							<span></span>
 							<span></span>
 							<span></span>
 						</div>
-						<ul class="pro-menu">
-							<li class="current-menu-item"><a href="#">О нас</a></li>
-							<li><a href="#">Услуги</a></li>
-							<li><a href="#">Обучение</a></li>
-							<li><a href="#">Галерея работ</a></li>
-							<li><a href="#">Блог</a></li>
-							<li><a href="#">Контакты</a></li>
-						</ul>
-						<a href="#" class="btn btn-transparent">Получить звонок</a>
+						<?php 
+							$args = array(
+								'theme_location'  => 'main-menu',
+								'container'       => '', 
+								'menu_class'      => 'pro-menu', 
+							);
+							wp_nav_menu( $args );
+						?>
+						<a href="#callback" class="btn btn-transparent fancybox">Получить звонок</a>
 						<div class="clearfix"></div>
 					</div>
 				</div>
 				<div class="col-xs-10 right-container">
 					<div class="slider-top">
-						<div class="slide">
-							<div class="text">
-								<div class="title">Добро пожаловать</div>
-								<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Текст страна деревни раз текстов страну продолжил ее моей переписали!</p>
+						<?php if( have_rows('slide','option') ):while ( have_rows('slide','option') ) : the_row(); ?>
+							<div class="slide">
+								<div class="text">
+									<?php the_sub_field('slide_content'); ?>
+								</div>
 							</div>
-						</div>
-						<div class="slide">
-							<div class="text">
-								<div class="title">Добро пожаловать</div>
-								<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Текст страна деревни раз текстов страну продолжил ее моей переписали!</p>
-							</div>
-						</div>
+						<?php endwhile;endif; ?>
 					</div>
 				</div>
 			</div>
@@ -50,19 +45,14 @@
 	<div class="wrapper about-wr">
 		<div class="container">
 			<div class="col-xs-6 left">
-				<img src="img/about-img.jpg" alt="about">
+				<?php $mservimg = get_field('m_serv_img','option'); ?>
+				<img src="<?php echo $mservimg['sizes']['large']; ?>" alt="<?php echo $mservimg['alt']; ?>">
 				<div class="centered">
-					<a href="#" class="btn btn-circle">Узнать больше</a>
+					<a href="#fform" class="btn btn-circle fancybox" onclick="fform('Получить консультацию','Получить консультацию');">Получить консультацию</a>
 				</div>
 			</div>
 			<div class="col-xs-5 col-xs-offset-1 list">
-				<p>Свадебный декор/ украшение зала</p>
-				<p>Выездная регистрация</p>
-				<p>Свадебная фотозона</p>
-				<p>Букет невесты</p>
-				<p>Прокат декора</p>
-				<p>Аренда платьев трансформеров</p>
-				<p>Организация свадеб/ координация</p>
+				<?php the_field('m_serv_text','option'); ?>
 			</div>
 		</div>
 	</div>
@@ -71,19 +61,30 @@
 	<div class="container portfolio-container">
 		<div class="title">ПОРТФОЛИО</div>
 		<div class="portfolio-row">
-			<div class="pp p35"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p25"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p40"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p26"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p40"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p34"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p35"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p25"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
-			<div class="pp p40"><a href="img/portfolio.jpg" style="background-image: url(img/portfolio.jpg);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<?php 
+				$mp1 = get_field('m_p_img1','option');
+				$mp2 = get_field('m_p_img2','option');
+				$mp3 = get_field('m_p_img3','option');
+				$mp4 = get_field('m_p_img4','option');
+				$mp5 = get_field('m_p_img5','option');
+				$mp6 = get_field('m_p_img6','option');
+				$mp7 = get_field('m_p_img7','option');
+				$mp8 = get_field('m_p_img8','option');
+				$mp9 = get_field('m_p_img9','option');
+			 ?>
+			<div class="pp p35"><a href="<?php echo $mp1['sizes']['large']; ?>" style="background-image: url(<?php echo $mp1['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p25"><a href="<?php echo $mp2['sizes']['large']; ?>" style="background-image: url(<?php echo $mp2['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p40"><a href="<?php echo $mp3['sizes']['large']; ?>" style="background-image: url(<?php echo $mp3['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p26"><a href="<?php echo $mp4['sizes']['large']; ?>" style="background-image: url(<?php echo $mp4['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p40"><a href="<?php echo $mp5['sizes']['large']; ?>" style="background-image: url(<?php echo $mp5['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p34"><a href="<?php echo $mp6['sizes']['large']; ?>" style="background-image: url(<?php echo $mp6['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p35"><a href="<?php echo $mp7['sizes']['large']; ?>" style="background-image: url(<?php echo $mp7['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p25"><a href="<?php echo $mp8['sizes']['large']; ?>" style="background-image: url(<?php echo $mp8['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
+			<div class="pp p40"><a href="<?php echo $mp9['sizes']['large']; ?>" style="background-image: url(<?php echo $mp9['sizes']['medium']; ?>);" class="img fancybox" data-fancybox-group="main-portfolio"></a></div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="centered">
-			<a href="#" class="btn btn-circle">Смотреть всё</a>
+			<a href="/partfolio_category/galereya-rabot/" class="btn btn-circle">Смотреть всё</a>
 		</div>
 	</div>
 
@@ -101,24 +102,16 @@
 		<div class="container">
 			<div class="title">Почему стоит выбрать нас?</div>
 			<div class="row">
-				<div class="col-xs-4">
-					<img src="img/wedding-cake.svg" alt="icon">
-					<div class="title-b">Lorem ipsum dolor sit amet.</div>
-					<div class="desc">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего запятой вскоре свой коварный языкового взобравшись выйти дорогу эта!</div>
-				</div>
-				<div class="col-xs-4">
-					<img src="img/wedding-cake.svg" alt="icon">
-					<div class="title-b">Lorem ipsum dolor sit amet.</div>
-					<div class="desc">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего запятой вскоре свой коварный языкового взобравшись выйти дорогу эта!</div>
-				</div>
-				<div class="col-xs-4">
-					<img src="img/wedding-cake.svg" alt="icon">
-					<div class="title-b">Lorem ipsum dolor sit amet.</div>
-					<div class="desc">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего запятой вскоре свой коварный языкового взобравшись выйти дорогу эта!</div>
-				</div>
+				<?php if( have_rows('adv','option') ):while ( have_rows('adv','option') ) : the_row(); ?>
+					<div class="col-xs-4">
+						<img src="<?php the_sub_field('adv_img'); ?>" alt="icon">
+						<div class="title-b"><?php the_sub_field('adv_title'); ?></div>
+						<div class="desc"><?php the_sub_field('adv_text'); ?></div>
+					</div>
+				<?php endwhile;endif; ?>
 			</div>
 			<div class="centered">
-				<a href="#" class="btn btn-circle">Расчитать стоимость праздника</a>
+				<a href="#fform" class="btn btn-circle fancybox" onclick="fform('Расчитать стоимость праздника','Расчитать стоимость праздника');">Расчитать стоимость праздника</a>
 			</div>
 		</div>
 	</div>
@@ -137,48 +130,37 @@
 		<div class="container">
 			<div class="title">Наша команда</div>
 			<div class="row">
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
-				<div class="col-xs-3 team">
-					<img src="img/joli.jpg" alt="joli">
-					<div class="name">Екатерина Иванова</div>
-					<div class="dol">Технический директор</div>
-				</div>
+				<?php if( have_rows('team','option') ):while ( have_rows('team','option') ) : the_row(); ?>
+					<div class="col-xs-3 team">
+						<?php $teamimg = get_sub_field('team_img'); ?>
+						<img src="<?php echo $teamimg['sizes']['team']; ?>" alt="<?php echo $teamimg['alt']; ?>">
+						<div class="name"><?php the_sub_field('team_name'); ?></div>
+						<div class="dol"><?php the_sub_field('team_dol'); ?></div>
+					</div>
+				<?php endwhile;endif; ?>
 			</div>
 		</div>
 	</div>
 
-<?php include 'footer.php'; ?>
+	<div id="callback" style="display: none;">
+		<form id="fform-call" class="form-class">
+			<div class="modal-form-title">Получить звонок</div>
+			<div class="form-group">
+				<input class="form-control" id="namefc" name="name" type="text" required />
+				<label for="namefc">Ваше имя *</label>
+			</div>
+			<div class="form-group">
+				<input class="form-control" id="telfc" name="tel" type="tel" required />
+				<label for="telfc">Ваш телефон *</label>
+			</div>
+			<div class="form-group for-robots" style="display: none;">
+				<input class="form-control" type="text" name="email" />
+				<input class="form-control modal-form-value" type="text" name="title" value="Получить звонок" />
+			</div>
+			<div class="centered">
+				<button type="submit" class="btn btn-circle">Получить звонок</button>
+			</div>
+		</form>
+	</div>
+
+<?php get_footer(); ?>

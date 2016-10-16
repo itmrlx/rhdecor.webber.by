@@ -1,4 +1,7 @@
-<?php include 'header.php'; ?>
+<?php /*
+template name: Контакты
+*/ ?>
+<?php get_header(); ?>
 <?php include 'header-page.php'; ?>
 
 	<div class="wrapper contacts-page-wr">
@@ -32,16 +35,17 @@
 				<div class="col-xs-8 contacts-icon">
 					<div class="row">
 						<div class="col-xs-4">
-							<img src="img/location-c.svg" alt="location">
-							<p>г. Минск, ул. М. Танка 12</p>
+							<img src="<?php bloginfo('template_url'); ?>/img/location-c.svg" alt="location">
+							<p><?php the_field('adres','option'); ?></p>
 						</div>
 						<div class="col-xs-4">
-							<img src="img/phone-call-c.svg" alt="location">
-							<a href="tel:+375 (25) 999-88-77">+375 (25) 999-88-77</a>
+							<img src="<?php bloginfo('template_url'); ?>/img/phone-call-c.svg" alt="location">
+							<a href="tel:<?php echo str_replace(array(" ","(",")","-"),"",get_field(tel1,option)); ?>"><?php the_field('tel1','option'); ?></a>
+							<a href="tel:<?php echo str_replace(array(" ","(",")","-"),"",get_field(tel2,option)); ?>"><?php the_field('tel2','option'); ?></a>
 						</div>
 						<div class="col-xs-4">
-							<img src="img/location-c.svg" alt="location">
-							<a href="mailto:info@wedding.by">info@wedding.by</a>
+							<img src="<?php bloginfo('template_url'); ?>/img/location-c.svg" alt="location">
+							<a href="mailto:<?php the_field('email','option'); ?>" class="mail"><?php the_field('email','option'); ?></a>
 						</div>
 					</div>
 				</div>
@@ -49,4 +53,4 @@
 		</div>
 	</div>
 
-<?php include 'footer.php'; ?>
+	<?php get_footer(); ?>
