@@ -1166,7 +1166,8 @@
 	.form-control{
 		box-shadow: none;
 		border: 1px solid #e5e5e5;
-		&:focus{
+		&:focus,
+		&.notempty{
 			+label{
 				display: none;
 			}
@@ -1193,6 +1194,9 @@
 		display: block;
 		border: 4px solid lighten(#ccc,15%);
 		position: relative;
+		img{
+			width: 100%;
+		}
 		&:before{
 			content: '';
 			position: absolute;

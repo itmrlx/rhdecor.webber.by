@@ -44,7 +44,7 @@ template name: Контакты
 							<a href="tel:<?php echo str_replace(array(" ","(",")","-"),"",get_field(tel2,option)); ?>"><?php the_field('tel2','option'); ?></a>
 						</div>
 						<div class="col-xs-4">
-							<img src="<?php bloginfo('template_url'); ?>/img/location-c.svg" alt="location">
+							<img src="<?php bloginfo('template_url'); ?>/img/envelope-c.svg" alt="email">
 							<a href="mailto:<?php the_field('email','option'); ?>" class="mail"><?php the_field('email','option'); ?></a>
 						</div>
 					</div>
