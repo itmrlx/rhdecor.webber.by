@@ -15,7 +15,9 @@
 						<a href="<?php the_permalink(); ?>" class="img"><img src="<?php echo $addimg['sizes']['thumbnail']; ?>" alt="<?php echo $addimg['alt']; ?>"></a>
 						<h2 class="title-b"><?php the_title(); ?></h2>
 						<div class="desc"><?php the_field('mesto'); ?></div>
-						<div class="date"><?php the_field('date'); ?></div>
+						<?php if(get_field('date')): ?>
+							<div class="date"><?php the_field('date'); ?></div>
+						<?php endif; ?>
 						<div class="clearfix"></div>
 						<a href="<?php the_permalink(); ?>" class="btn btn-circle">Подробнее</a>
 					</div>
